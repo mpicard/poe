@@ -3,11 +3,14 @@ import { NgModule } from '@angular/core';
 
 
 import { AppComponent } from './app.component';
-
+import { TimerComponent } from './timer/timer.component';
+import { ProgressComponent } from './progress/progress.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    TimerComponent,
+    ProgressComponent
   ],
   imports: [
     BrowserModule
