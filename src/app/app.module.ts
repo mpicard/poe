@@ -1,7 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
-
 import { AppComponent } from './app.component';
 import { TimerComponent } from './timer/timer.component';
 import { ProgressComponent } from './progress/progress.component';
@@ -12,10 +11,7 @@ import { ProgressComponent } from './progress/progress.component';
     TimerComponent,
     ProgressComponent
   ],
-  imports: [
-    BrowserModule
-  ],
-  providers: [],
+  imports: [BrowserModule],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
