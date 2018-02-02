@@ -10,7 +10,8 @@
       "assets": [
         "assets",
         "favicon.ico",
-        "entry.js"
+        "entry.js",
+        "api"
       ],
       "index": "index.html",
       "main": "main.ts",
@@ -20,9 +21,13 @@
       "testTsconfig": "tsconfig.spec.json",
       "prefix": "app",
       "styles": [
+        "assets/css/fa-svg-with-js.css",
         "styles.styl"
       ],
-      "scripts": [],
+      "scripts": [
+        "assets/js/fa-regular.min.js",
+        "assets/js/fontawesome-all.js"
+      ],
       "environmentSource": "environments/environment.ts",
       "environments": {
         "dev": "environments/environment.ts",

@@ -1,0 +1,13 @@
+<span>
+  {{ todo.content }}
+</span>
+
+<div>
+  <i class="far fa-check-square"
+     *ngIf="todo.done"
+     (click)=toggle()></i>
+
+  <i class="far fa-square"
+     *ngIf="!todo.done"
+     (click)=toggle()></i>
+</div>
