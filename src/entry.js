@@ -6,7 +6,9 @@ let win;
 
 function createWindow() {
   win = new BrowserWindow({
-    width: 800, height: 600
+    width: 800,
+    height: 600,
+    backgroundColor: '#545e75'
   });
 
   win.loadURL(url.format({

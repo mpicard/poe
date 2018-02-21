@@ -1,9 +1,14 @@
-<form #form="ngForm">
+<form (ngSubmit)="submit()">
+
+  <input name="content"
+         type="text"
+         [(ngModel)]="content"
+         (focus)="focused = !focused"
+         (blur)="focused = !focused">
 
   <i class="fas fa-plus"
-     [class.focus]=""></i>
+     [class.focused]="focused"
+     (click)="submit()">
+  </i>
 
-  <input name="new"
-         type="text"
-         [(ngModel)]="content">
 </form>

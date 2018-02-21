@@ -1,27 +1,29 @@
-import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 
-import { Todo } from './todo/todo.model';
+import { DatabaseService } from './database.service';
+
+
+const type = 'todo';
 
 @Injectable()
-export class TodoService {
+export class TodoService extends DatabaseService {
 
-  constructor(private http: HttpClient) { }
-
-  public list(): Observable<Todo[]> {
-    return this.http.get<Todo[]>('api/todos');
+  list() {
+    return Observable.fromEvent(
+      this.db.changes({
+        live: true,
+        since: 0,
+        include_docs: true,
+        filter: doc => doc.type === type
+      }), 'change');
   }
 
-  public markDone(id: string): Observable<Todo> {
-    return this.toggle(id, true);
+  create(content: string) {
+    return this.db.post({ type, content, done: false });
   }
 
-  public markNotDone(id: string): Observable<Todo> {
-    return this.toggle(id, false);
-  }
-
-  private toggle(id: string, done: boolean): Observable<Todo> {
-    return this.http.patch<Todo>(`api/todos/${id}`, { done });
+  async toggle(todo) {
+    return await this.db.put({ ...todo, done: !todo.done });
   }
 }

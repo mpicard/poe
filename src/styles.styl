@@ -1,25 +1,52 @@
 @import url('https://fonts.googleapis.com/css?family=Work+Sans');
 
-$black-coral = #545e75;
-$cadet-grey = #9ba0bc;
-$pewter-blue = #9ba0bc;
-$silver = #c1b8c8;
-$magic-mint = #a9ddd6;
+$black-coral = #545e75
+$cadet-grey = #9ba0bc
+$pewter-blue = #91adc2
+$silver = #c1b8c8
+$magic-mint = #a9ddd6
+$text-color = #ccc4d2
+$border-radius = 4px
+
+*
+  padding 0
+  margin 0
+
+html
+  box-sizing border-box
+  font-size 16px
+
+*, *:before, *:after
+  box-sizing border-box
+
+html, body
+  height 100%
 
 body
   font-family 'Work Sans', sans-serif
   font-size 1.5rem
-  color $silver
-  padding 2rem
+  color $text-color
+  padding 1.5rem
 
-button
-  border 1px solid $silver
-  border-radius 2px
-  padding .5rem .9rem
-  font-size 1rem
-  background-color darken($black-coral, 20%)
-  color $silver
-  font-weight bold
+input
+  background transparent
+  border none
+  color $text-color
+  font-size 1.25rem
+  padding .5rem
 
-h2
-  margin 1rem
+  &:focus
+    outline none
+  //   color $magic-mint
+  //   border-bottom 1px solid $magic-mint
+
+    // &:after
+
+// button
+//   border 1px solid darken($black-coral, 25%)
+//   border-radius 2px
+//   padding .5rem .9rem
+//   font-size 1rem
+//   background-color darken($black-coral, 20%)
+//   color $silver
+//   font-weight bold

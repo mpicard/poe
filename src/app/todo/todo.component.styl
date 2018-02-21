@@ -1,4 +1,26 @@
-div
-  display inline-block
-  float right
-  user-select none
+@import "~styles"
+
+form
+  display flex
+  border 1px solid darken($black-coral, 20%)
+  border-radius $border-radius
+  justify-content space-between
+  align-items center
+  padding-right .5rem
+  height auto
+  &.focus
+    border-bottom 1px solid $magic-mint
+    border-bottom-left-radius 0
+    border-bottom-right-radius 0
+
+input
+  flex 1
+  &:focus
+    color $magic-mint
+
+
+.icons
+  height auto
+
+  .focus
+    color $magic-mint

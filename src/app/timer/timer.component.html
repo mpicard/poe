@@ -1,19 +1,17 @@
-<div>
+<app-progress [progress]="timer$ | async"
+              [display]="timer$ | async">
+</app-progress>
 
-  <h2>
-    {{ displayMinutes }}:{{ displaySeconds }}
-  </h2>
+{{ progress$ | async }}
 
+<div class="buttons">
 
-  <div class="buttons">
+  <button #start>
+    start
+  </button>
 
-    <button #start>
-      start
-    </button>
+  <button #pause>
+    pause
+  </button>
 
-    <button #pause>
-      pause
-    </button>
-
-  </div>
 </div>

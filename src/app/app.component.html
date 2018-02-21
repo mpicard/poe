@@ -1,7 +1,13 @@
-<app-timer></app-timer>
+<h1>Poe</h1>
 
-<app-progress></app-progress>
+<!-- <div class="grid">
 
-<app-list></app-list>
+  <app-list></app-list>
 
-<app-new></app-new>
+  <app-timer></app-timer>
+
+</div> -->
+
+
+<app-svg-progress [progress]="progress | async">
+</app-svg-progress>

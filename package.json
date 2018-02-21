@@ -5,9 +5,8 @@
   "main": "dist/entry.js",
   "scripts": {
     "ng": "ng",
-    "start": "concurrently -r -k -s first \"yarn api\" \"yarn serve\" \"yarn electron\"",
+    "start": "concurrently -r -k -s first \"yarn serve\" \"yarn electron\"",
     "serve": "ng server -p 4848 -pc proxy.conf.json",
-    "api": "json-server -p 3030 -w db.json",
     "build": "ng build --prod",
     "electron": "electron src/entry.dev.js",
     "electron:prod": "yarn build && electron ."
@@ -23,8 +22,13 @@
     "@angular/platform-browser": "^5.0.0",
     "@angular/platform-browser-dynamic": "^5.0.0",
     "@angular/router": "^5.0.0",
+    "@ngrx/store": "^5.1.0",
+    "@ngrx/store-devtools": "^5.1.0",
     "core-js": "^2.4.1",
     "electron": "^1.7.11",
+    "pouchdb": "^6.4.3",
+    "pouchdb-adapter-idb": "^6.4.3",
+    "rxdb": "^7.3.3",
     "rxjs": "^5.5.2",
     "zone.js": "^0.8.14"
   },
@@ -33,7 +37,9 @@
     "@angular/cli": "1.6.2",
     "@angular/compiler-cli": "^5.0.0",
     "@angular/language-service": "^5.0.0",
+    "@types/pouchdb": "^6.3.2",
     "concurrently": "^3.5.1",
+    "electron-devtools-installer": "^2.2.3",
     "json-server": "^0.12.1",
     "typescript": "~2.4.2"
   }

@@ -1,13 +1,25 @@
-<span>
-  {{ todo.content }}
-</span>
+<form (ngSubmit)="update()"
+      [class.focus]="focus"
+      novalidate>
 
-<div>
-  <i class="far fa-check-square"
-     *ngIf="todo.done"
-     (click)=toggle()></i>
+  <input type="text"
+         name="content"
+         [(ngModel)]="todo.content"
+         (focus)="focus = true"
+         (blur)="focus = false">
 
-  <i class="far fa-square"
-     *ngIf="!todo.done"
-     (click)=toggle()></i>
-</div>
+  <div class="icons">
+    <i class="far fa-check-square"
+       [class.focus]="focus"
+       *ngIf="todo.done"
+       (click)=toggle()>
+    </i>
+
+    <i class="far fa-square"
+       [class.focus]="focus"
+       *ngIf="!todo.done"
+       (click)=toggle()>
+    </i>
+  </div>
+
+</form>

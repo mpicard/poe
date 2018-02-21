@@ -1,19 +1,21 @@
-import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
-import { Observable } from "rxjs/Rx";
+import { Component, ElementRef, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { Observable, Subscription } from 'rxjs/Rx';
 
 @Component({
   selector: 'app-timer',
   templateUrl: './timer.component.html',
   styleUrls: ['./timer.component.styl']
 })
-export class TimerComponent implements OnInit {
+export class TimerComponent implements OnInit, OnDestroy {
 
   @ViewChild('start') start: ElementRef;
   @ViewChild('pause') pause: ElementRef;
 
-  private seconds = 25 * 60;
+  private sub: Subscription;
+  private timer$: Observable<any>;
 
   ngOnInit() {
+
     const start$ = Observable
       .fromEvent(this.start.nativeElement, 'click')
       .map(() => true);
@@ -22,25 +24,24 @@ export class TimerComponent implements OnInit {
       .fromEvent(this.pause.nativeElement, 'click')
       .map(() => false);
 
-    Observable
+    const interval = 1000 // 1sec
+    const duration = 10 // 10 sec
+
+    this.timer$ = Observable
       .merge(start$, pause$)
       .distinctUntilChanged()
       .switchMap(resume =>
         resume ?
           Observable
-            .timer(0, 1000)
-            .takeUntil(Observable.timer(1e5 + 1e3)) :
-          Observable.never()
-      )
-      .subscribe(() => this.seconds -= 1);
+            .timer(0, interval)
+            .takeUntil(Observable.timer(duration * interval + interval)) :
+          Observable.never())
+      .scan((count: number) => count + 1, 0)
+      .takeWhile((count: number) => count <= duration)
+      .finally(() => console.log('done'));
   }
 
-  private get displayMinutes() {
-    return Math.floor(this.seconds / 60);
+  ngOnDestroy() {
+    this.sub.unsubscribe();
   }
-
-  private get displaySeconds() {
-    return String('00' + (this.seconds - (this.displayMinutes * 60))).slice(-2);
-  }
-
 }
