@@ -1,6 +1,7 @@
 {
   "name": "poe",
   "version": "0.0.0",
+  "private": true,
   "license": "UNLICENSED",
   "main": "dist/entry.js",
   "scripts": {
@@ -11,7 +12,6 @@
     "electron": "electron src/entry.dev.js",
     "electron:prod": "yarn build && electron ."
   },
-  "private": true,
   "dependencies": {
     "@angular/animations": "^5.0.0",
     "@angular/common": "^5.0.0",
@@ -39,6 +39,7 @@
     "@angular/language-service": "^5.0.0",
     "@types/pouchdb": "^6.3.2",
     "concurrently": "^3.5.1",
+    "dotenv": "^5.0.0",
     "electron-devtools-installer": "^2.2.3",
     "json-server": "^0.12.1",
     "typescript": "~2.4.2"

@@ -1,6 +1,21 @@
 @import "~styles"
 
-#progress
-  stroke-dasharray $circumference
-  stroke-dashoffset $circumference
-  transition stroke-dasharray 400ms linear
+svg
+
+  text
+    fill text-color
+
+  circle
+    fill none !important
+
+    &#progress
+      stroke-width 4px
+      stroke text-color
+      transition stroke-dashoffset 500ms linear
+
+    &:not(#progress)
+      stroke-width 3px
+      stroke #444
+
+  text
+    font-family 'Roboto Mono', monospace

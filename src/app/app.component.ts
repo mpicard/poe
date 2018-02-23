@@ -7,5 +7,5 @@ import { Observable } from 'rxjs';
   styleUrls: ['./app.component.styl']
 })
 export class AppComponent {
-  progress = Observable.timer(0, 500);
+  progress = Observable.timer(0, 500).filter(x => x <= 100);
 }

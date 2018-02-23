@@ -1,12 +1,12 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
-import { Observable } from 'rxjs/Rx';
+import { Observable } from 'rxjs';
 
 @Component({
-  selector: 'app-timer',
-  templateUrl: './timer.component.html',
-  styleUrls: ['./timer.component.styl']
+  selector: 'app-countdown',
+  templateUrl: './countdown.component.html',
+  styleUrls: ['./countdown.component.styl']
 })
-export class TimerComponent implements OnInit {
+export class CountdownComponent implements OnInit {
   @Input() interval: number = 1000;
   @Input() duration: number = 25 * 60;
 

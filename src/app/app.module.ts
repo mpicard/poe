@@ -7,11 +7,11 @@ import { DatabaseService } from './database.service';
 import { ListComponent } from './list/list.component';
 import { NewComponent } from './new/new.component';
 import { ProgressComponent } from './progress/progress.component';
+import { TimerPipe } from './timer.pipe';
 import { TimerComponent } from './timer/timer.component';
 import { TodoService } from './todo.service';
 import { TodoComponent } from './todo/todo.component';
-import { SvgProgressComponent } from './svg-progress/svg-progress.component';
-
+import { CountdownComponent } from './countdown/countdown.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +21,8 @@ import { SvgProgressComponent } from './svg-progress/svg-progress.component';
     ListComponent,
     TodoComponent,
     NewComponent,
-    SvgProgressComponent
+    TimerPipe,
+    CountdownComponent
   ],
   imports: [
     BrowserModule,

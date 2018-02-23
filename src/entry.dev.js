@@ -1,3 +1,5 @@
+require('dotenv').load();
+
 const { app, BrowserWindow } = require('electron');
 const { default: installExtension, REDUX_DEVTOOLS } = require('electron-devtools-installer');;
 const url = require('url');
@@ -5,6 +7,10 @@ const url = require('url');
 let win;
 
 function createWindow() {
+
+  installExtension(REDUX_DEVTOOLS)
+    .then(() => console.log('Redux Devtools installed.'));
+
   win = new BrowserWindow({
     width: 937,
     height: 937,
@@ -20,10 +26,6 @@ function createWindow() {
   }, 5e3);
 
   win.webContents.openDevTools();
-
-  installExtension(REDUX_DEVTOOLS)
-    .then(name => console.log(`${name} installed`))
-    .catch(err => console.error(err));
 
   win.on('closed', () => {
     win = null;

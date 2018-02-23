@@ -1,12 +1,12 @@
-@import url('https://fonts.googleapis.com/css?family=Work+Sans');
+@import url('https://fonts.googleapis.com/css?family=Roboto+Mono|Work+Sans');
 
-$black-coral = #545e75
-$cadet-grey = #9ba0bc
-$pewter-blue = #91adc2
-$silver = #c1b8c8
-$magic-mint = #a9ddd6
-$text-color = #ccc4d2
-$border-radius = 4px
+black-coral = #545e75
+cadet-grey = #9ba0bc
+pewter-blue = #91adc2
+silver = #c1b8c8
+magic-mint = #a9ddd6
+text-color = #ccc4d2
+border-radius = 4px
 
 *
   padding 0
@@ -14,7 +14,7 @@ $border-radius = 4px
 
 html
   box-sizing border-box
-  font-size 16px
+  font-size 18px
 
 *, *:before, *:after
   box-sizing border-box
@@ -25,28 +25,35 @@ html, body
 body
   font-family 'Work Sans', sans-serif
   font-size 1.5rem
-  color $text-color
+  color text-color
   padding 1.5rem
 
 input
   background transparent
   border none
-  color $text-color
+  color text-color
   font-size 1.25rem
   padding .5rem
 
   &:focus
     outline none
-  //   color $magic-mint
-  //   border-bottom 1px solid $magic-mint
 
-    // &:after
+button
+  border 1px solid darken(black-coral, 25%)
+  border-radius 2px
+  padding .5rem 1rem
+  font-size 1rem
+  background-color darken(black-coral, 20%)
+  color text-color
+  font-weight 400
+  outline none
 
-// button
-//   border 1px solid darken($black-coral, 25%)
-//   border-radius 2px
-//   padding .5rem .9rem
-//   font-size 1rem
-//   background-color darken($black-coral, 20%)
-//   color $silver
-//   font-weight bold
+  &:hover
+    color lighten(text-color, 10%)
+    background-color darken(black-coral, 10%)
+    border-color darken(black-coral, 35%)
+
+  &:active
+    color lighten(text-color, 20%)
+    background-color darken(black-coral, 30%)
+    border-color darken(black-coral, 45%)
