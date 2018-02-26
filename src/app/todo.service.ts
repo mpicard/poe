@@ -3,7 +3,6 @@ import { Observable } from 'rxjs/Observable';
 
 import { DatabaseService } from './database.service';
 
-
 const type = 'todo';
 
 @Injectable()
@@ -19,8 +18,8 @@ export class TodoService extends DatabaseService {
       }), 'change');
   }
 
-  create(content: string) {
-    return this.db.post({ type, content, done: false });
+  async create(content: string) {
+    return await this.db.post({ type, content, done: false });
   }
 
   async toggle(todo) {

@@ -8,7 +8,7 @@ import { Observable } from 'rxjs';
 })
 export class CountdownComponent implements OnInit {
   @Input() interval: number = 1000;
-  @Input() duration: number = 25 * 60;
+  @Input() duration: number = 2 * 60;
 
   @ViewChild('start') start: ElementRef;
   @ViewChild('pause') pause: ElementRef;
@@ -35,6 +35,6 @@ export class CountdownComponent implements OnInit {
         : Observable.never<number>())
       .scan((count: number) => count + 1, 0)
       .takeWhile((count: number) => count <= this.duration)
-      .startWith(0)
+      .startWith(0);
   }
 }

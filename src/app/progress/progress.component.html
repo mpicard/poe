@@ -1,16 +1,16 @@
-<svg width="240"
-     height="240"
+<svg width="220"
+     height="220"
      xmlns="http://www.w3.org/2000/svg"
      [attr.data-content]="progress">
 
   <circle [attr.r]="radius"
-          cy="120"
-          cx="120">
+          cy="110"
+          cx="110">
   </circle>
 
   <circle id="progress"
-          cy="120"
-          cx="120"
+          cy="110"
+          cx="110"
           [attr.r]="radius"
           [style.stroke-dashoffset]="strokeDashoffset"
           [style.stroke-dasharray]="circumference">
@@ -23,4 +23,5 @@
     {{ progress | timer:duration }}
   </text>
 
+  <polygon points="100,135 130,152, 100,170" />
 </svg>

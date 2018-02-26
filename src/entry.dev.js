@@ -9,7 +9,8 @@ let win;
 function createWindow() {
 
   installExtension(REDUX_DEVTOOLS)
-    .then(() => console.log('Redux Devtools installed.'));
+    .then(() => console.log('Redux Devtools installed.'))
+    .catch(err => console.error(err));
 
   win = new BrowserWindow({
     width: 937,

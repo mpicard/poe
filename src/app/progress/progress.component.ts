@@ -7,7 +7,7 @@ import { Component, Input } from '@angular/core';
 })
 export class ProgressComponent {
   @Input() progress: number;
-  @Input() duration: number = 25 * 60;
+  @Input() duration: number;
 
   private radius = 90;
 
@@ -16,12 +16,12 @@ export class ProgressComponent {
   }
 
   get strokeDashoffset() {
-    let percent = this.progress;
+    let percent = (this.duration - this.progress) / this.duration;
 
-    if (this.progress < 0) percent = 0;
-    else if (this.progress > 100) percent = 100;
+    if (percent < 0) percent = 0;
+    else if (percent > 1) percent = 1;
 
-    return ((100 - percent) / 100) * this.circumference;
+    return percent * this.circumference;
   }
 
   get strokeDasharray() {
