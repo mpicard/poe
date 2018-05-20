@@ -1,25 +1,5 @@
-<form (ngSubmit)="update()"
-      [class.focus]="focus"
-      novalidate>
-
-  <input type="text"
-         name="content"
-         [(ngModel)]="todo.content"
-         (focus)="focus = true"
-         (blur)="focus = false">
-
-  <div class="icons">
-    <i class="far fa-check-square"
-       [class.focus]="focus"
-       *ngIf="todo.done"
-       (click)=toggle()>
-    </i>
-
-    <i class="far fa-square"
-       [class.focus]="focus"
-       *ngIf="!todo.done"
-       (click)=toggle()>
-    </i>
-  </div>
-
-</form>
+<app-todo-item *ngFor="let todo of todos$ | async"
+               [todo]=todo
+               (toggled)=onToggle($event)
+               (selected)=onSelect($event)>
+</app-todo-item>

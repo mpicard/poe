@@ -5,10 +5,11 @@ import PouchDB from 'pouchdb';
 export class DatabaseService {
   constructor() {
     // if (!environment.production) PouchDB.debug.enable('pouchdb:api');
+    // else PouchDB.debug.disable();
 
     this.db = new PouchDB('poe', { adapter: 'idb', revs_limit: 25 });
     // PouchDB.sync(environment.remote, 'poe', { live: true, retry: true });
   }
 
-  protected db;
+  protected db: PouchDB.Database;
 }

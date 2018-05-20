@@ -1,35 +1,26 @@
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
+import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 
+import { environment } from '../environments/environment';
 import { AppComponent } from './app.component';
-import { CountdownComponent } from './countdown/countdown.component';
 import { DatabaseService } from './database.service';
-import { ListComponent } from './list/list.component';
-import { NewComponent } from './new/new.component';
-import { ProgressComponent } from './progress/progress.component';
-import { reducer } from './store';
-import { TimerPipe } from './timer.pipe';
-import { TodoService } from './todo.service';
-import { TodoComponent } from './todo/todo.component';
+import { TimerModule } from './timer/timer.module';
+import { TodoModule } from './todo/todo.module';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ProgressComponent,
-    ListComponent,
-    TodoComponent,
-    NewComponent,
-    TimerPipe,
-    CountdownComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
-    FormsModule,
-    StoreModule.forRoot(reducer)
+    TodoModule,
+    TimerModule,
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    environment.production ? [] : StoreDevtoolsModule.instrument()
   ],
-  providers: [TodoService, DatabaseService],
+  providers: [DatabaseService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

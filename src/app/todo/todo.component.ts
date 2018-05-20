@@ -1,27 +1,30 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { Store } from '@ngrx/store';
+import { Observable } from 'rxjs/Observable';
 
-import { TodoService } from '../todo.service';
-
+import { LoadTodos, ToggleTodo } from './store/todo.actions';
+import { Todo, TodoState } from './store/todo.models';
+import { getAllTodos } from './store/todo.selectors';
 
 @Component({
   selector: 'app-todo',
   templateUrl: './todo.component.html',
   styleUrls: ['./todo.component.styl']
 })
-export class TodoComponent implements AfterViewInit {
+export class TodoComponent implements OnInit {
+  constructor(private store: Store<TodoState>) { }
 
-  @Input() todo: any;
+  todos$: Observable<Todo[]> = this.store.select(getAllTodos);
 
-  constructor(private service: TodoService) { }
-
-  ngAfterViewInit() { }
-
-  toggle() {
-    this.service.toggle(this.todo);
+  ngOnInit() {
+    this.store.dispatch(new LoadTodos());
   }
 
-  update() {
-    console.log(this.todo);
-    // this.service.update(this.todo);
+  onToggle(todo) {
+    this.store.dispatch(new ToggleTodo(todo))
+  }
+
+  onSelect(todo) {
+    // this.store.dispatch(new SelectTodo(todo));
   }
 }

@@ -1,0 +1,9 @@
+<div (click)="onSelect()">
+  <!-- <pre>{{ todo | json }}</pre> -->
+  <p>
+    <input type="text"
+           [(ngModel)]="todo.content">
+
+    <span (click)="onToggle()">{{ todo.done }}</span>
+  </p>
+</div>
